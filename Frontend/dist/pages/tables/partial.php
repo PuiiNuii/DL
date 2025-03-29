@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ice Sales Records</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/part.css">
+
   <!-- Add SheetJS library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
 </head>
 <body>
   <div class="ice-sales-container">
@@ -27,23 +30,97 @@
         <div class="ice-type-section">
           <h4>Ice Types</h4>
           <div class="form-row">
+            <!-- Original Ice -->
             <div class="form-group ice-type-group">
               <label for="iceTypeOriginal">ទឹកកកដើម (Original Ice)</label>
-              <input type="number" step="0.1" class="form-control" id="iceTypeOriginal" value="" placeholder="ចំណួន">
-              <label for="unitPriceOriginal">តម្លៃរាយ (Unit Price)</label>
-              <input type="number" class="form-control" id="unitPriceOriginal" placeholder="តម្លៃ" required>
+              <div class="ice-input-row">
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeOriginal" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceOriginal" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeOriginal1" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceOriginal1" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeOriginal2" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceOriginal2" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeOriginal3" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceOriginal3" placeholder="0" required>
+                </div>
+              </div>
             </div>
+
+            <!-- Large Ice -->
             <div class="form-group ice-type-group">
               <label for="iceTypeLarge">ទឹកកកអនាម័យធំ (Large)</label>
-              <input type="number" step="0.1" class="form-control" id="iceTypeLarge" value="" placeholder="ចំណួន">
-              <label for="unitPriceLarge">តម្លៃរាយ (Unit Price)</label>
-              <input type="number" class="form-control" id="unitPriceLarge" placeholder="តម្លៃ" required>
+              <div class="ice-input-row">
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeLarge" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceLarge" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeLarge1" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceLarge1" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeLarge2" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceLarge2" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeLarge3" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceLarge3" placeholder="0" required>
+                </div>
+              </div>
             </div>
+
+            <!-- Small Ice -->
             <div class="form-group ice-type-group">
               <label for="iceTypeSmall">ទឹកកកអនាម័យតូច (Small)</label>
-              <input type="number" step="0.1" class="form-control" id="iceTypeSmall" value="" placeholder="ចំណួន">
-              <label for="unitPriceSmall">តម្លៃរាយ (Unit Price)</label>
-              <input type="number" class="form-control" id="unitPriceSmall" placeholder="តម្លៃ" required>
+              <div class="ice-input-row">
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeSmall" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceSmall" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeSmall1" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceSmall1" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeSmall2" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceSmall2" placeholder="0" required>
+                </div>
+                <div class="ice-input-pair">
+                  <span class="input-label">ចំណួន</span>
+                  <input type="number" step="0.1" class="form-control" id="iceTypeSmall3" value="" placeholder="0">
+                  <span class="input-label">តម្លៃ</span>
+                  <input type="number" class="form-control" id="unitPriceSmall3" placeholder="0" required>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -51,19 +128,19 @@
         <div class="form-row">
           <div class="form-group">
             <label for="oldDebt">ប្រាក់ជំពាក់ចាស់ (Old Debt)</label>
-            <input type="number" class="form-control" id="oldDebt" value="">
+            <input type="number" class="form-control" id="oldDebt" value="0">
           </div>
           <div class="form-group">
             <label for="newDebt">ប្រាក់ជំពាក់ថ្មី (New Debt)</label>
-            <input type="number" class="form-control" id="newDebt" value="">
+            <input type="number" class="form-control" id="newDebt" value="0">
           </div>
           <div class="form-group">
             <label for="payment">ប្រាក់សង (Payment)</label>
-            <input type="number" class="form-control" id="payment" value="">
+            <input type="number" class="form-control" id="payment" value="0">
           </div>
           <div class="form-group">
             <label for="expenses">ថ្លៃសាំង បាយ (Expenses)</label>
-            <input type="number" class="form-control" id="expenses" value="">
+            <input type="number" class="form-control" id="expenses" value="0">
           </div>
         </div>
 
@@ -74,6 +151,7 @@
       </form>
     </div>
 
+    <!-- Rest of your HTML remains the same -->
     <!-- Search Section -->
     <div class="card search-section">
       <h3 class="section-title">
