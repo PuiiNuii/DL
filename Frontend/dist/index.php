@@ -1,3 +1,15 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the user is logged in (e.g., a session variable exists)
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Redirect to login page if not logged in
+    // header("Location: http://localhost/DL/DL/Frontend/dist/pages/samples/login.php");
+    header("Location: pages/samples/login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <?php include "_head.php"?>
@@ -30,10 +42,11 @@
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
         
-
         <?php include "_sidebar.php"?>
 
         <?php include "_endinject.php"?>
         <!-- End custom js for this page -->
+      </div>
+    </div>
   </body>
 </html>

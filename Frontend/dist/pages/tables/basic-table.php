@@ -1,3 +1,16 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the user is logged in (e.g., a session variable exists)
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Redirect to login page if not logged in
+    // header("Location: http://localhost/DL/DL/Frontend/dist/pages/samples/login.php");
+    header("Location: /DL/DL/Frontend/dist/pages/samples/login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   

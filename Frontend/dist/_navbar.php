@@ -12,13 +12,13 @@
         <div class="navbar-menu-wrapper d-flex align-items-center">
           <h5 class="mb-0 font-weight-medium d-none d-lg-flex">សូមស្វាគមន៍ DL 2</h5>
           <ul class="navbar-nav navbar-nav-right">
-            <form class="search-form d-none d-md-block" action="#">
+            <!-- <form class="search-form d-none d-md-block" action="#">
               <i class="icon-magnifier"></i>
               <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-            </form>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li>
-            <li class="nav-item dropdown">
+            </form> -->
+            <!-- <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li> -->
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="icon-speech"></i>
                 <span class="count">7</span>
@@ -57,7 +57,7 @@
                   </div>
                 </a>
               </div>
-            </li>
+            </li> -->
             <!-- <li class="nav-item dropdown language-dropdown d-none d-sm-flex align-items-center">
               <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="d-inline-flex">

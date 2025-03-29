@@ -41,7 +41,7 @@
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
                 <span class="menu-title">Charts</span>
                 <i class="icon-chart menu-icon"></i>
@@ -51,7 +51,7 @@
                   <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
                 </ul>
               </div>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                 <span class="menu-title">Tables</span>
@@ -78,7 +78,7 @@
               <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <!-- <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li> -->
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.php"> Login </a></li>
                   <!-- <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li> -->
