@@ -1,3 +1,27 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    // Hardcoded credentials for simplicity (Admin/Admin)
+    if ($username === 'Admin' && $password === 'Admin') {
+        // Set session variable to indicate user is logged in
+        $_SESSION['logged_in'] = true;
+        // Redirect to index.php
+        // header("Location: http://localhost/DL/DL/Frontend/dist/index.php");
+        header("Location: /DL/DL/Frontend/dist/index.php");
+        exit();
+    } else {
+        // Display error message if credentials are wrong
+        $error = "ឈ្មោះអ្នកប្រើ ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ!";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,30 +53,33 @@
                 <div class="brand-logo">
                   <img src="../../../assets/images/logo-dark.svg">
                 </div>
-                <h4>Hello! let's get started</h4>
-                <h6 class="font-weight-light">Sign in to continue.</h6>
-                <form class="pt-3">
+                <h4>សួស្តី! តោះចាប់ផ្តើម</h4>
+                <h6 class="font-weight-light">សូមចូលគណនីរបស់អ្នក</h6>
+                <?php if (isset($error)): ?>
+                  <p class="text-danger"><?php echo $error; ?></p>
+                <?php endif; ?>
+                <form class="pt-3" method="POST">
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                    <input type="text" name="username" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" required>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
                   </div>
                   <div class="mt-3">
-                    <a class="btn d-grid btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                    <button type="submit" class="btn d-grid btn-primary btn-lg font-weight-medium auth-form-btn">ចូល</button>
                   </div>
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
                       <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"> Keep me signed in </label>
+                        <input type="checkbox" class="form-check-input"> រក្សាខ្ញុំឱ្យចូល </label>
                     </div>
-                    <a href="#" class="auth-link text-black">Forgot password?</a>
+                    <!-- <a href="#" class="auth-link text-black">Forgot password?</a> -->
                   </div>
-                  <div class="mb-2 d-grid gap-2">
+                  <!-- <div class="mb-2 d-grid gap-2">
                     <button type="button" class="btn d-grid btn-facebook auth-form-btn d-flex justify-content-center align-items-center">
                       <i class="icon-social-facebook me-2"></i>Connect using facebook </button>
-                  </div>
-                  <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                  </div> -->
+                 
                   </div>
                 </form>
               </div>
