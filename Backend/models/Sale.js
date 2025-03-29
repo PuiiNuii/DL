@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 const saleSchema = new mongoose.Schema({
   customerName: { type: String, required: true },
-  saleDate: { type: Date, required: true, default: Date.now },
   iceTypeOriginal: { type: Number, default: 0 },
   unitPriceOriginal: { type: Number, default: 0 },
   iceTypeLarge: { type: Number, default: 0 },
@@ -17,7 +16,8 @@ const saleSchema = new mongoose.Schema({
   expenses: { type: Number, default: 0 }
 }, {
   toJSON: { virtuals: true },
-  toObject: { virtuals: true }
+  toObject: { virtuals: true },
+  timestamps: true // Adding timestamps for createdAt/updatedAt
 });
 
 // Virtual properties for calculated fields
