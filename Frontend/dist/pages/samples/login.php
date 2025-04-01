@@ -51,9 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                  <img src="../../../assets/images/logo-dark.svg">
+                  <!-- <img src="../../../assets/images/logo-dark.svg"> -->
                 </div>
-                <h4>សួស្តី! តោះចាប់ផ្តើម</h4>
+                <h4>សួស្តី! DL Admin </h4>
                 <h6 class="font-weight-light">សូមចូលគណនីរបស់អ្នក</h6>
                 <?php if (isset($error)): ?>
                   <p class="text-danger"><?php echo $error; ?></p>
