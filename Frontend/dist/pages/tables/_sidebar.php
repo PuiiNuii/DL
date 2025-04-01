@@ -6,11 +6,11 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="profile image">
+                  <!-- <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="profile image"> -->
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Henry Klein</p>
+                  <p class="profile-name">Administrator</p>
                   <p class="designation">Administrator</p>
                 </div>
                 <div class="icon-container">
@@ -24,7 +24,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../index.php">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">ផ្ទាំងគ្រប់គ្រង</span>
                 <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
@@ -53,7 +53,7 @@
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
                 <span class="menu-title">Forms</span>
                 <i class="icon-book-open menu-icon"></i>
@@ -63,7 +63,7 @@
                   <li class="nav-item"> <a class="nav-link" href="../../pages/forms/basic_elements.html">Form Elements</a></li>
                 </ul>
               </div>
-            </li>
+            </li> -->
             <!-- <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
                 <span class="menu-title">Charts</span>
@@ -77,12 +77,12 @@
             </li> -->
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-                <span class="menu-title">Tables</span>
+                <span class="menu-title">តារាងកត់ត្រា</span>
                 <i class="icon-grid menu-icon"></i>
               </a>
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/tables/basic-table.php">Driver</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="../../pages/tables/basic-table.php">អ្នកបើកបរលក់ទឹកកក</a></li>
                 </ul>
               </div>
               <div class="collapse" id="tables">
@@ -94,7 +94,7 @@
             <li class="nav-item nav-category"><span class="nav-link">Extra Pages</span></li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">User Pages</span>
+                <span class="menu-title">ទំព័រចេញ</span>
                 <i class="icon-disc menu-icon"></i>
               </a>
               <div class="collapse" id="auth">
