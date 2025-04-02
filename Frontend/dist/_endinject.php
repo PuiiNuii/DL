@@ -1,13 +1,6 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ice Sales Dashboard</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css"> -->
+
+ 
   <style>
-    
     body {
       font-family: 'Khmer OS', 'Arial', sans-serif;
       background-color: #f8f9fa;
@@ -30,21 +23,6 @@
       text-align: center;
       padding: 20px;
       color: #6c757d;
-    }
-    .ice-type-display div {
-      margin-bottom: 5px;
-    }
-    .original { color: #3498db; }
-    .large { color: #e74c3c; }
-    .small { color: #2ecc71; }
-    .quantity-display, .price-display, .total-display {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .action-buttons {
-      display: flex;
-      gap: 5px;
     }
     .dotted-chart-height {
       height: 300px;
@@ -75,11 +53,6 @@
       font-size: 24px;
       font-weight: bold;
       margin: 10px 0;
-    }
-    .date-update-info {
-      font-size: 0.8rem;
-      color: #6c757d;
-      font-style: italic;
     }
   </style>
 </head>
@@ -121,7 +94,7 @@
         <div class="card">
           <div class="card-body">
             <div class="d-sm-flex">
-              <h4 class="card-title flex-shrink-1">តារាងលក់ប្រចាំខែ</h4>
+              <h4 class="card-title flex-shrink-1">តារាងលក់ប្រចាំថ្ងៃ</h4>
               <div class="ms-auto">
                 <select class="form-select form-select-sm" id="monthSelect">
                   <option value="0">មករា</option>
@@ -162,48 +135,6 @@
         </div>
       </div>
     </div>
-
-    <div class="row mt-4">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="card-title mb-0">ការលក់ថ្មីៗ</h4>
-              <div class="date-update-info">
-                កាលបរិច្ឆេទនឹងត្រូវបានធ្វើបច្ចុប្បន្នភាពដោយស្វ័យប្រវត្តិទៅតាមកាលបរិច្ឆេទបច្ចុប្បន្ន
-              </div>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>ល.រ</th>
-                    <th>គោត្តនាម</th>
-                    <th>ប្រភេទទឹកកក</th>
-                    <th>បរិមាណ</th>
-                    <th>តម្លៃរាយ</th>
-                    <th>សរុប</th>
-                    <th>ប្រាក់ជំពាក់ចាស់</th>
-                    <th>ប្រាក់ជំពាក់ថ្មី</th>
-                    <th>ប្រាក់សង</th>
-                    <th>សរុបប្រាក់ជំពាក់</th>
-                    <th>ចំណាយ</th>
-                    <th>ចំណូល</th>
-                    <th>កាលបរិច្ឆេទ</th>
-                    <th>កាលបរិច្ឆេទដើម</th>
-                  </tr>
-                </thead>
-                <tbody id="recentSalesTable">
-                  <tr>
-                    <td colspan="14" class="no-results">កំពុងផ្ទុកទិន្នន័យ...</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -229,17 +160,15 @@
         if (!response.ok) throw new Error('Failed to load sales data');
         salesData = await response.json();
         
-        // Auto-update dates to current date while preserving original dates
         salesData = salesData.map(sale => {
           const currentDate = new Date().toISOString();
           return {
             ...sale,
-            currentDate: currentDate,  // Store current date
-            originalDate: sale.createdAt  // Preserve original date
+            currentDate: currentDate,
+            originalDate: sale.createdAt
           };
         });
         
-        // Sort by original date (newest first)
         salesData.sort((a, b) => new Date(b.originalDate) - new Date(a.originalDate));
         
         updateDashboard();
@@ -250,20 +179,18 @@
       }
     }
 
-    // Update dashboard summary and recent sales
+    // Update dashboard summary
     function updateDashboard() {
       const now = new Date();
       const currentMonth = now.getMonth();
       const currentYear = now.getFullYear();
       const today = now.getDate();
       
-      // Filter data for current month (using current date)
       const monthlyData = salesData.filter(sale => {
         const saleDate = new Date(sale.currentDate);
         return saleDate.getMonth() === currentMonth && saleDate.getFullYear() === currentYear;
       });
       
-      // Filter data for today (using current date)
       const dailyData = salesData.filter(sale => {
         const saleDate = new Date(sale.currentDate);
         return saleDate.getDate() === today && 
@@ -271,7 +198,6 @@
                saleDate.getFullYear() === currentYear;
       });
       
-      // Calculate totals
       let totalRevenue = 0;
       let totalDebt = 0;
       let totalExpenses = 0;
@@ -287,17 +213,12 @@
         totalProfit += (saleRevenue - sale.expenses);
       });
       
-      // Update summary cards
       document.getElementById('totalRevenue').textContent = totalRevenue.toLocaleString() + ' KHR';
       document.getElementById('totalDebt').textContent = totalDebt.toLocaleString() + ' KHR';
       document.getElementById('totalExpenses').textContent = totalExpenses.toLocaleString() + ' KHR';
       document.getElementById('totalProfit').textContent = totalProfit.toLocaleString() + ' KHR';
       
-      // Update today's sales count
       document.getElementById('todaySalesCount').textContent = dailyData.length;
-      
-      // Update recent sales table (last 10 sales)
-      updateRecentSalesTable(salesData.slice(0, 10));
     }
 
     // Calculate revenue for a single sale
@@ -376,159 +297,10 @@
       return revenueOriginal + revenueLarge + revenueLarge30 + revenueSmall + revenueSmall30;
     }
 
-    // Update recent sales table
-    function updateRecentSalesTable(data) {
-      const tableBody = document.getElementById('recentSalesTable');
-      tableBody.innerHTML = '';
-
-      if (data.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="14" class="no-results">No records found</td>`;
-        tableBody.appendChild(row);
-        return;
-      }
-
-      data.forEach((sale, index) => {
-        const currentDate = new Date(sale.currentDate);
-        const formattedCurrentDate = formatDate(sale.currentDate);
-        const formattedOriginalDate = formatDate(sale.originalDate);
-        
-        const originalQuantities = [
-          sale.iceTypeOriginal || 0,
-          sale.iceTypeOriginal1 || 0,
-          sale.iceTypeOriginal2 || 0,
-          sale.iceTypeOriginal3 || 0
-        ].filter(qty => qty > 0);
-        
-        const largeQuantities = [
-          sale.iceTypeLarge || 0,
-          sale.iceTypeLarge1 || 0,
-          sale.iceTypeLarge2 || 0,
-          sale.iceTypeLarge3 || 0
-        ].filter(qty => qty > 0);
-        
-        const large30Quantities = [
-          sale.iceTypeLarge30 || 0,
-          sale.iceTypeLarge301 || 0,
-          sale.iceTypeLarge302 || 0,
-          sale.iceTypeLarge303 || 0
-        ].filter(qty => qty > 0);
-        
-        const smallQuantities = [
-          sale.iceTypeSmall || 0,
-          sale.iceTypeSmall1 || 0,
-          sale.iceTypeSmall2 || 0,
-          sale.iceTypeSmall3 || 0
-        ].filter(qty => qty > 0);
-        
-        const small30Quantities = [
-          sale.iceTypeSmall30 || 0,
-          sale.iceTypeSmall301 || 0,
-          sale.iceTypeSmall302 || 0,
-          sale.iceTypeSmall303 || 0
-        ].filter(qty => qty > 0);
-
-        const totalOriginal = originalQuantities.reduce((sum, qty) => sum + qty, 0);
-        const totalLarge = largeQuantities.reduce((sum, qty) => sum + qty, 0);
-        const totalLarge30 = large30Quantities.reduce((sum, qty) => sum + qty, 0);
-        const totalSmall = smallQuantities.reduce((sum, qty) => sum + qty, 0);
-        const totalSmall30 = small30Quantities.reduce((sum, qty) => sum + qty, 0);
-
-        const originalPrices = [
-          sale.unitPriceOriginal || 0,
-          sale.unitPriceOriginal1 || 0,
-          sale.unitPriceOriginal2 || 0,
-          sale.unitPriceOriginal3 || 0
-        ].filter(price => price > 0);
-        
-        const largePrices = [
-          sale.unitPriceLarge || 0,
-          sale.unitPriceLarge1 || 0,
-          sale.unitPriceLarge2 || 0,
-          sale.unitPriceLarge3 || 0
-        ].filter(price => price > 0);
-        
-        const large30Prices = [
-          sale.unitPriceLarge30 || 0,
-          sale.unitPriceLarge301 || 0,
-          sale.unitPriceLarge302 || 0,
-          sale.unitPriceLarge303 || 0
-        ].filter(price => price > 0);
-        
-        const smallPrices = [
-          sale.unitPriceSmall || 0,
-          sale.unitPriceSmall1 || 0,
-          sale.unitPriceSmall2 || 0,
-          sale.unitPriceSmall3 || 0
-        ].filter(price => price > 0);
-        
-        const small30Prices = [
-          sale.unitPriceSmall30 || 0,
-          sale.unitPriceSmall301 || 0,
-          sale.unitPriceSmall302 || 0,
-          sale.unitPriceSmall303 || 0
-        ].filter(price => price > 0);
-
-        const revenueOriginal = originalQuantities.reduce((sum, qty, i) => sum + (qty * (originalPrices[i] || 0)), 0);
-        const revenueLarge = largeQuantities.reduce((sum, qty, i) => sum + (qty * (largePrices[i] || 0)), 0);
-        const revenueLarge30 = large30Quantities.reduce((sum, qty, i) => sum + (qty * (large30Prices[i] || 0)), 0);
-        const revenueSmall = smallQuantities.reduce((sum, qty, i) => sum + (qty * (smallPrices[i] || 0)), 0);
-        const revenueSmall30 = small30Quantities.reduce((sum, qty, i) => sum + (qty * (small30Prices[i] || 0)), 0);
-        
-        const totalRevenuePerSale = revenueOriginal + revenueLarge + revenueLarge30 + revenueSmall + revenueSmall30;
-        const totalDebtPerSale = sale.oldDebt + sale.newDebt - sale.payment;
-
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${index + 1}</td>
-          <td>${sale.customerName}</td>
-          <td>
-            <div class="ice-type-display">
-              ${originalQuantities.length > 0 ? `<div><span class="original">ទឹកកកដើម (${totalOriginal})</span></div>` : ''}
-              ${largeQuantities.length > 0 ? `<div><span class="large">អនាម័យធំ 20kg (${totalLarge})</span></div>` : ''}
-              ${large30Quantities.length > 0 ? `<div><span class="large">អនាម័យធំ 30kg (${totalLarge30})</span></div>` : ''}
-              ${smallQuantities.length > 0 ? `<div><span class="small">អនាម័យតូច 20kg (${totalSmall})</span></div>` : ''}
-              ${small30Quantities.length > 0 ? `<div><span class="small">អនាម័យតូច 30kg (${totalSmall30})</span></div>` : ''}
-            </div>
-          </td>
-          <td>
-            <div class="quantity-display">
-              ${originalQuantities.length > 0 ? `<div>${originalQuantities.join('<br>')}</div>` : ''}
-              ${largeQuantities.length > 0 ? `<div>${largeQuantities.join('<br>')}</div>` : ''}
-              ${large30Quantities.length > 0 ? `<div>${large30Quantities.join('<br>')}</div>` : ''}
-              ${smallQuantities.length > 0 ? `<div>${smallQuantities.join('<br>')}</div>` : ''}
-              ${small30Quantities.length > 0 ? `<div>${small30Quantities.join('<br>')}</div>` : ''}
-            </div>
-          </td>
-          <td>
-            <div class="price-display">
-              ${originalPrices.length > 0 ? `<div>${originalPrices.map(p => `${p.toLocaleString()} KHR`).join('<br>')}</div>` : ''}
-              ${largePrices.length > 0 ? `<div>${largePrices.map(p => `${p.toLocaleString()} KHR`).join('<br>')}</div>` : ''}
-              ${large30Prices.length > 0 ? `<div>${large30Prices.map(p => `${p.toLocaleString()} KHR`).join('<br>')}</div>` : ''}
-              ${smallPrices.length > 0 ? `<div>${smallPrices.map(p => `${p.toLocaleString()} KHR`).join('<br>')}</div>` : ''}
-              ${small30Prices.length > 0 ? `<div>${small30Prices.map(p => `${p.toLocaleString()} KHR`).join('<br>')}</div>` : ''}
-            </div>
-          </td>
-          <td>${totalRevenuePerSale.toLocaleString()} KHR</td>
-          <td>${sale.oldDebt.toLocaleString()} KHR</td>
-          <td>${sale.newDebt.toLocaleString()} KHR</td>
-          <td>${sale.payment.toLocaleString()} KHR</td>
-          <td>${totalDebtPerSale.toLocaleString()} KHR</td>
-          <td>${sale.expenses.toLocaleString()} KHR</td>
-          <td>${totalRevenuePerSale.toLocaleString()} KHR</td>
-          <td>${formattedCurrentDate}</td>
-          <td>${formattedOriginalDate}</td>
-        `;
-        tableBody.appendChild(row);
-      });
-    }
-
     // Initialize charts
     function initializeCharts() {
-      // Monthly sales chart
       const monthlyCtx = document.getElementById('monthlySalesChart');
       
-      // Group sales by day for the current month (using current date)
       const now = new Date();
       const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
       const dailySales = Array(daysInMonth).fill(0);
@@ -586,7 +358,6 @@
         }
       });
       
-      // Daily sales doughnut chart (by ice type)
       const dailyCtx = document.getElementById('dailySalesChart');
       
       const today = new Date();
@@ -642,26 +413,22 @@
         }
       });
       
-      // Update charts when month selection changes
       document.getElementById('monthSelect').addEventListener('change', function() {
         const selectedMonth = parseInt(this.value);
         const now = new Date();
         const year = now.getFullYear();
         
-        // Check if selected month is in the future
         if (selectedMonth > now.getMonth() && year === now.getFullYear()) {
           alert('ខែនេះមិនទាន់មានទិន្នន័យនៅឡើយទេ!');
           this.value = now.getMonth();
           return;
         }
         
-        // Filter data for selected month (using current date)
         const monthlyData = salesData.filter(sale => {
           const saleDate = new Date(sale.currentDate);
           return saleDate.getMonth() === selectedMonth && saleDate.getFullYear() === year;
         });
         
-        // Update monthly chart
         const daysInMonth = new Date(year, selectedMonth + 1, 0).getDate();
         const dailySales = Array(daysInMonth).fill(0);
         
@@ -675,7 +442,6 @@
         monthlyChart.data.datasets[0].data = dailySales;
         monthlyChart.update();
         
-        // Update summary cards for selected month
         let totalRevenue = 0;
         let totalDebt = 0;
         let totalExpenses = 0;
@@ -698,12 +464,9 @@
       });
     }
 
-    // Initialize the dashboard when page loads
     document.addEventListener('DOMContentLoaded', function() {
-      // Set current month as default selection
       const now = new Date();
       document.getElementById('monthSelect').value = now.getMonth();
-      
       loadSalesData();
     });
   </script>

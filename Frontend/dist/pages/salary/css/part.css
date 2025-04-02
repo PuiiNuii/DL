@@ -1,0 +1,41 @@
+/* Add these styles to your styles.css file */
+.ice-input-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+
+  .ice-input-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 100px;
+    flex: 1;
+  }
+
+  .ice-input-pair input {
+    width: 100%;
+  }
+
+  .ice-type-group {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+
+  .ice-type-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .ice-type-section h4 {
+    margin-top: 0;
+    color: #444;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+  }
