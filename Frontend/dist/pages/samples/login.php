@@ -7,16 +7,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Hardcoded credentials for simplicity (Admin/Admin)
+    // Hardcoded credentials for simplicity
     if ($username === 'Admin' && $password === 'Admin') {
-        // Set session variable to indicate user is logged in
         $_SESSION['logged_in'] = true;
-        // Redirect to index.php
-        // header("Location: http://localhost/DL/DL/Frontend/dist/index.php");
+        $_SESSION['role'] = 'admin'; // Assign admin role
+        header("Location: /DL/DL/Frontend/dist/index.php");
+        exit();
+    } elseif ($username === 'Customer' && $password === 'Customer') {
+        $_SESSION['logged_in'] = true;
+        $_SESSION['role'] = 'customer'; // Assign customer role
         header("Location: /DL/DL/Frontend/dist/index.php");
         exit();
     } else {
-        // Display error message if credentials are wrong
         $error = "ឈ្មោះអ្នកប្រើ ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ!";
     }
 }
