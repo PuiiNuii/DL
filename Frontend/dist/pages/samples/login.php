@@ -11,12 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($username === 'Admin' && $password === 'Admin') {
         $_SESSION['logged_in'] = true;
         $_SESSION['role'] = 'admin'; // Assign admin role
-        header("Location: /DL/DL/Frontend/dist/index.php");
+        header("Location: /DL/Frontend/dist/index.php");
         exit();
     } elseif ($username === 'Customer' && $password === 'Customer') {
         $_SESSION['logged_in'] = true;
         $_SESSION['role'] = 'customer'; // Assign customer role
-        header("Location: /DL/DL/Frontend/dist/index.php");
+        header("Location: /DL/Frontend/dist/index.php");
         exit();
     } else {
         $error = "ឈ្មោះអ្នកប្រើ ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ!";
